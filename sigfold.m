@@ -1,4 +1,4 @@
-function [y,n] = sigshift(x, m, k)
+function [y,n] = sigfold(x, n)
 
 y = fliplr(x);
 n = -fliplr(n);
