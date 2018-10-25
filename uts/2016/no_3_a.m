@@ -1,0 +1,22 @@
+h = ;
+K = 500; w = [-K:K]*pi/K; H = dtft(h,n,w); magH = abs(H); phaH = angle(H);
+H_d = zeros(1,length(w)); H_d(K/2+1:3*K/2+1) = exp(-j*alpha*w(K/2+1:3*K/2+1));
+magH_d = abs(H_d); phaH_d = angle(H_d); wtick = sort([-1:0.4:1 0]);
+Hf_1 = figure; set(Hf_1,'NumberTitle','off','Name','3a');
+
+subplot(2,2,1); plot(w/pi,magH,'LineWidth',1.5); axis([-1 1 0 1.2]);
+xlabel('\omega / \pi','FontSize',LFS); ylabel('|H|','FontSize',LFS);
+title('Magnitude of H(e^{j\omega})','FontSize',TFS); set(gca,'XTick',wtick);
+subplot(2,2,2); plot(w/pi,phaH*180/pi,'LineWidth',1.5);
+xlabel('\omega / \pi','FontSize',LFS); ylabel('Degrees','FontSize',LFS);
+title('Phase of H(e^{j\omega})','FontSize',TFS);
+set(gca,'XTick',wtick); magtick = [-180:60:180];
+set(gca,'YTick',magtick); set(gca,'XTick',wtick);
+subplot(2,2,3); plot(w/pi,magH_d,'LineWidth',1.5); axis([-1 1 0 1.2]);
+xlabel('\omega / \pi','FontSize',LFS); ylabel('|H_d|','FontSize',LFS);
+title('Magnitude of H_d(e^{j\omega})','FontSize',TFS);
+set(gca,'XTick',wtick); ytick = [0:0.2:1.2]; set(gca,'YTick',ytick);
+subplot(2,2,4); plot(w/pi,phaH_d*180/pi,'LineWidth',1.5);
+xlabel('\omega / \pi','FontSize',LFS); ylabel('Degrees','FontSize',LFS);
+title('Phase of H_d(e^{j\omega})','FontSize',TFS);
+set(gca,'XTick',wtick); magtick = [-180:60:180]; set(gca,'YTick',magtick);
